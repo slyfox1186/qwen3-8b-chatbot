@@ -1,0 +1,16 @@
+fastapi>=0.95.0
+uvicorn[standard]>=0.22.0  # Include standard extras for performance
+redis-stack>=0.6.0  # Redis Stack client with RediSearch, RedisJSON
+redis[hiredis]>=4.5.1  # Include hiredis for better performance
+redis.asyncio>=4.5.1  # Async Redis client
+llama-cpp-python>=0.2.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+numpy>=1.24.0  # For vector operations
+sentence-transformers>=2.2.2  # For text embeddings
+beautifulsoup4>=4.12.0  # For HTML parsing
+aiohttp>=3.8.0  # For async web requests
+aiofiles>=23.0.0  # For async file operations
+requests>=2.31.0  # For sync web requests (fallback)
+duckduckgo-search>=3.9.0  # For web search (fallback)
+google-api-python-client>=2.90.0  # For Google Custom Search API

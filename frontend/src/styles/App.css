@@ -1,0 +1,245 @@
+:root {
+  /* Light Theme (Original) */
+  --color-primary-light-theme: #5c6bc0;
+  --color-primary-light-light-theme: #8e99f3;
+  --color-text-light-theme: #333;
+  --color-bg-light-theme: #f5f7fb;
+  --color-user-message-bg-light-theme: #e3f2fd;
+  --color-assistant-message-bg-light-theme: #ffffff;
+  --color-input-bg-light-theme: #ffffff;
+  --color-border-light-theme: #e0e0e0;
+  --color-error-bg-light-theme: #ffebee;
+  --color-error-text-light-theme: #c62828;
+  --color-thinking-bg-light-theme: #f0f0f0;
+  --color-thinking-text-light-theme: #444;
+  --color-thinking-border-light-theme: #5c6bc0;
+  --color-shadow-light-theme: rgba(0, 0, 0, 0.1);
+
+  /* Dark Theme */
+  --color-primary-dark-theme: #7986cb; /* Lighter purple for dark bg */
+  --color-primary-light-dark-theme: #9fa8da;
+  --color-text-dark-theme: #e0e0e0;    /* Light gray text */
+  --color-bg-dark-theme: #1e1e1e;      /* Dark background */
+  --color-user-message-bg-dark-theme: #2a2a2a; /* Slightly lighter dark for user messages */
+  --color-assistant-message-bg-dark-theme: #333333; /* Darker gray for assistant messages */
+  --color-input-bg-dark-theme: #2c2c2c; /* Dark input background */
+  --color-border-dark-theme: #424242;   /* Darker border */
+  --color-error-bg-dark-theme: #522a2a; /* Darker error bg */
+  --color-error-text-dark-theme: #ff8a80; /* Lighter error text */
+  --color-thinking-bg-dark-theme: #282c34; /* Darker thinking bg */
+  --color-thinking-text-dark-theme: #abb2bf; /* Lighter thinking text */
+  --color-thinking-border-dark-theme: #7986cb; /* Lighter thinking border */
+  --color-shadow-dark-theme: rgba(255, 255, 255, 0.05);
+
+
+  /* Active Theme - Default to Dark, can be toggled via JS if needed */
+  --color-primary: var(--color-primary-dark-theme);
+  --color-primary-light: var(--color-primary-light-dark-theme);
+  --color-text: var(--color-text-dark-theme);
+  --color-bg: var(--color-bg-dark-theme);
+  --color-user-message-bg: var(--color-user-message-bg-dark-theme);
+  --color-assistant-message-bg: var(--color-assistant-message-bg-dark-theme);
+  --color-input-bg: var(--color-input-bg-dark-theme);
+  --color-border: var(--color-border-dark-theme);
+  --color-error-bg: var(--color-error-bg-dark-theme);
+  --color-error-text: var(--color-error-text-dark-theme);
+  --color-thinking-bg: var(--color-thinking-bg-dark-theme);
+  --color-thinking-text: var(--color-thinking-text-dark-theme);
+  --color-thinking-border: var(--color-thinking-border-dark-theme);
+  --color-shadow: var(--color-shadow-dark-theme);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--color-primary-light);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #9e9e9e;
+  text-align: center;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 80%;
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  background-color: var(--color-user-message-bg);
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.assistant-message,
+.assistant-thinking {
+  background-color: var(--color-assistant-message-bg);
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 1px 2px var(--color-shadow);
+  margin-bottom: 8px;
+}
+
+.assistant-thinking {
+  background-color: var(--color-thinking-bg);
+  border-left: 3px solid var(--color-thinking-border);
+  opacity: 1 !important; /* Ensure it stays visible */
+  transition: none !important; /* Prevent any transitions */
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px var(--color-shadow); /* Added shadow consistent with assistant message */
+}
+
+.thinking-content {
+  font-size: 14px;
+  color: var(--color-thinking-text);
+  font-family: 'Consolas', 'Monaco', monospace;
+  white-space: pre-wrap;
+}
+
+.message-header {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.message-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.thinking {
+  display: inline-block;
+  animation: thinking 1.5s infinite;
+  opacity: 0.6;
+}
+
+@keyframes thinking {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--color-input-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: none;
+  font-family: inherit;
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.send-button {
+  align-self: flex-end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+}

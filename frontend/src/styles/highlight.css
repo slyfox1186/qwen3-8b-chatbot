@@ -1,0 +1,44 @@
+/* highlight.js styling for code blocks */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css');
+
+/* 
+  The styles below were mostly redundant or conflicted with markdown-renderer.css and App.css.
+  The primary purpose of this file is to import and support the highlight.js theme.
+  General markdown styling is handled by markdown-renderer.css.
+  The imported github-dark.min.css should handle most of the pre/code block styling.
+*/
+
+/* Ensure pre blocks have a consistent background if not fully covered by highlight.js theme */
+.markdown-content pre {
+  /* background-color: #1e1e1e; */ /* This should be covered by github-dark or a general dark theme variable */
+  /* Let github-dark.min.css define the background for code blocks */
+  border-radius: 4px;
+  padding: 1em; /* Keep padding for structure */
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+/* 
+  Inline code styling should be handled by markdown-renderer.css or App.css for consistency.
+  If specific highlight.js inline code styling is needed, it can be added here, 
+  but usually it's part of the main theme or general text styling.
+*/
+
+/* Ensure text color inside pre > code is primarily handled by the highlight.js theme */
+.markdown-content pre code {
+  /* color: #e6e6e6; */ /* Let github-dark.min.css define text colors */
+  background-color: transparent; /* Important to let pre background show */
+  padding: 0;
+  border-radius: 0;
+  font-size: 100%; /* highlight.js might adjust this, but good default */
+}
+
+/* Animation for new content appearing - this can be kept if used */
+@keyframes highlight-new-text {
+  from { background-color: rgba(255, 255, 150, 0.3); } /* Adjusted highlight for dark theme */
+  to { background-color: transparent; }
+}
+
+.new-text {
+  animation: highlight-new-text 1s ease-out;
+}
